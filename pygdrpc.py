@@ -35,7 +35,7 @@ async def if_playing_level(id):
             return "Playing an editor level"
     else:
         return "Playing a level."
-async def get_diff(level: gd.Level) -> str:
+async def get_difficulty(level: gd.Level) -> str:
     level = await client.get_level(id)
     if playinglevel == "Playing a level.":
         base = level.difficulty.name.lower().split('_')
@@ -56,5 +56,5 @@ while True:
     else:
         percent = "(" + str(percent) + "%)"
     name = asyncio.run(get_level_from_id(id))
-    RPC.update(pid=memory.process_id, state=str(f"{name} {percent}"), details=playinglevel, large_image="gd", small_image=asyncio.run(get_diff(id)))
+    RPC.update(pid=memory.process_id, state=str(f"{name} {percent}"), details=playinglevel, large_image="gd", small_image=asyncio.run(get_difficulty(id)))
     time.sleep(10)
