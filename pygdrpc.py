@@ -2,6 +2,8 @@ from pypresence import Presence
 import time
 import gd
 import asyncio
+version = "1.0.1b"
+print(f"Version is {version})
 smallicon = "none"
 client = gd.Client()
 try:
