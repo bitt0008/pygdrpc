@@ -45,12 +45,12 @@ async def get_difficulty(level: gd.Level) -> str:
     if playinglevel == "Playing a level.":
         base = level.difficulty.name.lower().split('_')
         if level.is_epic():
-            base.append('epic')
+            base.append("epic")
         elif level.is_featured():
-            base.append('featured')
+            base.append("featured")
         elif level.is_rated():
-            base.append('rated')
-    return '-'.join(base)
+            base.append("rated")
+    return "-".join(base)
 
 while True:
     memory.reload()
