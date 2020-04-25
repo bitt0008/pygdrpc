@@ -1,3 +1,4 @@
+os: windows 
 language: shell
 before_install:
         - choco install python
