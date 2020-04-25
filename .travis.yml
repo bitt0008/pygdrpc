@@ -1,0 +1,18 @@
+language: python
+
+python:
+  - "3.7"
+  - "3.8"
+
+install:
+  # install pypresence
+  - pip install -U pypresence
+  # install gd.py
+  - pip install -U gd.py
+  # install asyncio
+  - pip install -U asyncio
+  # install pyinstaller
+  - pip install -U pyinstaller
+
+script:
+  - py -3.8 -m PyInstaller -F --hiddenimport pkg_resources.py2_warn -i gd.ico pygdrpc.py
