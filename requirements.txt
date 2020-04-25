@@ -1,4 +1,3 @@
 pypresence
-time
 gd
 asyncio
