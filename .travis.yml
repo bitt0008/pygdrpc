@@ -3,6 +3,9 @@ language: shell
 before_install:
         - choco install python
 install:
+  # get pip
+  - curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+  - python get-pip.py
   # upgrade pip
   - pip install --upgrade pip
   # install pypresence
