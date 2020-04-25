@@ -4,15 +4,15 @@ before_install:
         - choco install python
 install:
   # upgrade pip
-  - python -m pip3 install --upgrade pip
+  - pip3 install --upgrade pip
   # install pypresence
-  - python -m pip3 install -U pypresence
+  - pip3 install -U pypresence
   # install gd.py
-  - python -m pip3 install -U gd.py
+  - pip3 install -U gd.py
   # install asyncio
-  - python -m pip3 install -U asyncio
+  - pip3 install -U asyncio
   # install pyinstaller
-  - python -m pip3 install -U pyinstaller
+  - pip3 install -U pyinstaller
 
 script:
   - python -m PyInstaller -F --hiddenimport pkg_resources.py2_warn -i gd.ico pygdrpc.py
