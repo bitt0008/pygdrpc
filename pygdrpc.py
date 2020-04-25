@@ -2,7 +2,6 @@ from pypresence import Presence
 import time
 import gd
 import asyncio
-import os
 version = "1.0.2b"
 print(f"Version is {version}")
 smallimage = "none"
@@ -11,11 +10,9 @@ try:
     memory = gd.memory.get_memory()
 except RuntimeError:
     print("Open Geometry Dash before running this!")
-    os.system("PAUSE")
-    exit()
 client_id = '703049428822655048'
 RPC = Presence(client_id)
-print("Connecting.")
+print("Connecting...")
 try:
     RPC.connect()
 except:
@@ -46,9 +43,9 @@ async def get_difficulty(level: gd.Level) -> str:
     if playinglevel == "Playing a level.":
         base = level.difficulty.name.lower().split('_')
         if level.is_epic():
-            base.append('epic')
+            base.append("epic")
         elif level.is_featured():
-            base.append('featured')
+            base.append("featured")
         if len(base) == 1:
             myorder = [0]
         if len(base) == 2:
