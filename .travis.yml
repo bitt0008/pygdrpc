@@ -1,11 +1,6 @@
-language: shell
-
+language: python
 python:
-  - "3.7"
   - "3.8"
-os: windows
-before_install:
-  - choco install python
 install:
   # upgrade pip
   - python -m pip install --upgrade pip
