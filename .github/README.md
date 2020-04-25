@@ -1,5 +1,5 @@
 # pygdrpc v1.0.2b
-(https://travis-ci.org/SpookyBear0/pygdrpc.svg?branch=master)
+[![Build Status](https://travis-ci.org/SpookyBear0/pygdrpc.svg?branch=master)](https://travis-ci.org/SpookyBear0/pygdrpc)
  Geometry Dash rich presence, rewritten in python!
  ## Features:
  - Level name and percentage
