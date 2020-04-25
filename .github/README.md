@@ -19,8 +19,8 @@
 
 ### Requirements
 **Python 3.7-3.8**
-**All modules in requirements.txt (pip install -r requiremennts.txt)
-**Pyinstaller module (pip install pyinstaller)
+**All modules in requirements.txt (pip install -r requiremennts.txt)**
+**Pyinstaller module (pip install pyinstaller)**
 
 ### Building the .exe
 - CD to the folder you want to compile from in command prompt.
