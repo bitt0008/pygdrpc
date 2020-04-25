@@ -3,9 +3,9 @@ import time
 import gd
 import asyncio
 import os
-version = "1.0.1b"
+version = "1.0.2b"
 print(f"Version is {version}")
-smallicon = "none"
+smallimage = "none"
 client = gd.Client()
 try:
     memory = gd.memory.get_memory()
@@ -27,14 +27,14 @@ async def get_level_from_id(id):
         level = await client.get_level(id)
         return level.name
     except gd.MissingAccess:
-        return ""
+        if playinglevel != "Menu":
+            return "Editor level"
 async def if_playing_level(id):
     try:
         level = await client.get_level(id)
-        level
     except gd.MissingAccess:
         if id == 1400 or id == 1399 and percent != "   ":
-            smallicon = "cp"
+            smallimage = "cp"
             return "Playing an editor level."
         else:
             return "Menu."
@@ -76,5 +76,8 @@ while True:
         playinglevel = "Menu"
     if id != 1404 and id != 0 and id != 1400 and id != 1399 and id != 4294967295 and id != 1408:
         playinglevel = "Playing a level."
-    RPC.update(state=str(f"{name} {percent}"), details=playinglevel, large_image="gd", small_image=smallimage)
+    if smallimage == "none":
+        RPC.update(state=str(f"{name} {percent}"), details=playinglevel, large_image="gd")
+    else:
+        RPC.update(state=str(f"{name} {percent}"), details=playinglevel, large_image="gd", small_image=smallimage)
     time.sleep(5)
