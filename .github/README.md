@@ -30,4 +30,4 @@
 - Run the command "python3 -m PyInstaller -F --hiddenimport pkg_resources.py2_warn pygdrpc.py"
 - Wait for it to finish then go in the newly created folder "dist", and your .exe should be waiting there.
  ## Credits:
-**Nekit: Showing me how to use the memory part of gd.py and more**
+**NeKitDS: Showing me how to use the memory part of gd.py and more**
