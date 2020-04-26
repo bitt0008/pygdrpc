@@ -63,14 +63,11 @@ while True:
     if scenev == 3:
         smallimage = asyncio.run(get_difficulty(id))
         RPC.update(state=str(f"{name} {percent}"), details=playinglevel, large_image="gd", small_image=asyncio.run(get_difficulty(id)))
-        print(smallimage)
     else:
         if scenev == 0 or 1 or 2 or 4 or 6 or 7 or 8 and smallimage == "none" and scenev != 3:
             RPC.update(state="     ", details="Menu", large_image="gd")
-            print("14")
         else:
             if scenev == 9 and smallimage == "none":
                 smallimage = asyncio.run(get_difficulty(id))
                 RPC.update(state="     ", details="Playing a robtop level.", large_image="gd", small_image=smallimage)
-                print("2")
     time.sleep(5)
