@@ -1,5 +1,7 @@
 # pygdrpc
  Geometry Dash rich presence, rewritten in python!
+ 
+ ![Example](https://i.imgur.com/hoMXIHh.png)
  ## Features:
  - Level name and percentage
  - Editor levels percentage (name coming soon)
