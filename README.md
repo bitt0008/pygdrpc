@@ -23,9 +23,10 @@
 - Pyinstaller module (pip install pyinstaller)
 
  ### Building the .exe
-1. CD to the folder you want to compile from in command prompt.
-2. Run the command "python3 -m PyInstaller -F --hiddenimport pkg_resources.py2_warn pygdrpc.py"
-3. Wait for it to finish then go in the newly created folder "dist", and your .exe should be waiting there.
+1. Clone repo
+2. CD to the folder you want to compile from in command prompt.
+3. Run the command "python3 -m PyInstaller -F --hiddenimport pkg_resources.py2_warn -i assets/gd.ico pygdrpc.py"
+4. Wait for it to finish then go in the newly created folder "dist", and your .exe should be waiting there.
  ## Planned Features:
  - Find editor levels names
  ## Credits:
