@@ -20,27 +20,28 @@ except:
 else:
     print("Connected successfully!")
 async def get_level_from_id(id):
+    global playinglevel
     try:
         level = await client.get_level(id)
         return level.name
     except gd.MissingAccess:
         if playinglevel != "Menu":
             return "Editor level"
-async def if_playing_level(id):
-    try:
-        level = await client.get_level(id)
-    except gd.MissingAccess:
-        if id == 1400 or id == 1399 and percent != "   ":
-            smallimage = "cp"
-            return "Playing an editor level."
-        else:
-            return "Menu."
-    else:
+async def if_playing_level():
+    scenev = memory.get_scene_value()
+    scene = memory.get_scene()
+    if scenev == 3:
+        playinglevel = "Playing a level."
         return "Playing a level."
+    if scene == "Search" or "Online" or "Select" or "Leaderboard" or "Main" or "Main Levels":
+        playinglevel = "Menu"
+        return "Menu"
+    if scene == "Main Level" or "The Challenge":
+        playinglevel = "Playing a robtop level."
+        return "Playing a robtop level."
 async def get_difficulty(level: gd.Level) -> str:
     if id != 1404 and id != 0 and id != 1400 and id != 1399 and id != 4294967295 and id != 1408:
         level = await client.get_level(id)
-    if playinglevel == "Playing a level.":
         base = level.difficulty.name.lower().split('_')
         if level.is_epic():
             base.append("epic")
@@ -59,22 +60,23 @@ async def get_difficulty(level: gd.Level) -> str:
         return '-'.join(base)
 while True:
     memory.reload()
+    scenev = memory.get_scene_value()
+    scene = memory.get_scene()
     id = memory.get_level_id()
     percent = memory.get_normal_percent()
-    playinglevel = asyncio.run(if_playing_level(id))
+    playinglevel = asyncio.run(if_playing_level())
     if percent == 0:
         percent = "   "
     else:
         percent = "(" + str(percent) + "%)"
     name = asyncio.run(get_level_from_id(id))
-    if playinglevel == "Playing a level.":
-        smallimage = asyncio.run(get_difficulty(id))
-    if percent == "   ":
-        playinglevel = "Menu"
-    if id != 1404 and id != 0 and id != 1400 and id != 1399 and id != 4294967295 and id != 1408:
-        playinglevel = "Playing a level."
-    if smallimage == "none":
-        RPC.update(state=str(f"{name} {percent}"), details=playinglevel, large_image="gd")
+    if scenev == 0 or 1 or 2 or 4 or 6 or 7 or 8 and smallimage == "none":
+        RPC.update(state="     ", details="Menu", large_image="gd")
+    if scenev == 9 and smallimage == "none":
+        RPC.update(state="     ", details="Playing a robtop level.", large_image="gd")
     else:
+        smallimage = asyncio.run(get_difficulty(id))
+        RPC.update(state=str(f"{name} {percent}"), details=playinglevel, large_image="gd", small_image=smallimage)
+    if scenev == "Playing a level.":
         RPC.update(state=str(f"{name} {percent}"), details=playinglevel, large_image="gd", small_image=smallimage)
     time.sleep(5)
