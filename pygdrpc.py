@@ -47,16 +47,6 @@ async def get_difficulty(level: gd.Level) -> str:
             base.append("epic")
         elif level.is_featured():
             base.append("featured")
-        if len(base) == 1:
-            myorder = [0]
-        if len(base) == 2:
-            if "demon" in base:
-                myorder = [1,0]
-            else:
-                myorder = [0,1]
-        if len(base) == 3:
-            myorder = [1,0,2]
-        base = [base[i] for i in myorder]    
         return '-'.join(base)
 while True:
     memory.reload()
@@ -70,13 +60,17 @@ while True:
     else:
         percent = "(" + str(percent) + "%)"
     name = asyncio.run(get_level_from_id(id))
-    if scenev == 0 or 1 or 2 or 4 or 6 or 7 or 8 and smallimage == "none":
-        RPC.update(state="     ", details="Menu", large_image="gd")
-    if scenev == 9 and smallimage == "none":
-        RPC.update(state="     ", details="Playing a robtop level.", large_image="gd")
-    else:
+    if scenev == 3:
         smallimage = asyncio.run(get_difficulty(id))
-        RPC.update(state=str(f"{name} {percent}"), details=playinglevel, large_image="gd", small_image=smallimage)
-    if scenev == "Playing a level.":
-        RPC.update(state=str(f"{name} {percent}"), details=playinglevel, large_image="gd", small_image=smallimage)
+        RPC.update(state=str(f"{name} {percent}"), details=playinglevel, large_image="gd", small_image=asyncio.run(get_difficulty(id)))
+        print(smallimage)
+    else:
+        if scenev == 0 or 1 or 2 or 4 or 6 or 7 or 8 and smallimage == "none" and scenev != 3:
+            RPC.update(state="     ", details="Menu", large_image="gd")
+            print("14")
+        else:
+            if scenev == 9 and smallimage == "none":
+                smallimage = asyncio.run(get_difficulty(id))
+                RPC.update(state="     ", details="Playing a robtop level.", large_image="gd", small_image=smallimage)
+                print("2")
     time.sleep(5)
