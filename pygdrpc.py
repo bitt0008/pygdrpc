@@ -41,13 +41,18 @@ async def if_playing_level():
         return "Playing a robtop level."
 async def get_difficulty(level: gd.Level) -> str:
     if id != 1404 and id != 0 and id != 1400 and id != 1399 and id != 4294967295 and id != 1408:
-        level = await client.get_level(id)
-        base = level.difficulty.name.lower().split('_')
-        if level.is_epic():
-            base.append("epic")
-        elif level.is_featured():
-            base.append("featured")
-        return '-'.join(base)
+        try:
+            level = await client.get_level(id)
+        except gd.MissingAccess:
+            editorlevel = True
+        else:
+            editorlevel = False
+            base = level.difficulty.name.lower().split('_')
+            if level.is_epic():
+                base.append("epic")
+            elif level.is_featured():
+                base.append("featured")
+            return '-'.join(base)
 while True:
     memory.reload()
     scenev = memory.get_scene_value()
