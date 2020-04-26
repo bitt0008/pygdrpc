@@ -16,16 +16,16 @@
 
 **Requirements**
 
-**Python 3.7-3.8**
+- Python 3.7-3.8
 
-**All modules in requirements.txt (pip install -r requiremennts.txt)**
+- All modules in requirements.txt (pip install -r requiremennts.txt)
 
-**Pyinstaller module (pip install pyinstaller)**
+- Pyinstaller module (pip install pyinstaller)
 
  ### Building the .exe
-- CD to the folder you want to compile from in command prompt.
-- Run the command "python3 -m PyInstaller -F --hiddenimport pkg_resources.py2_warn pygdrpc.py"
-- Wait for it to finish then go in the newly created folder "dist", and your .exe should be waiting there.
+1. CD to the folder you want to compile from in command prompt.
+2. Run the command "python3 -m PyInstaller -F --hiddenimport pkg_resources.py2_warn pygdrpc.py"
+3. Wait for it to finish then go in the newly created folder "dist", and your .exe should be waiting there.
  ## Planned Features:
  - Find editor levels names
  ## Credits:
