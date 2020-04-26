@@ -1,4 +1,4 @@
-# pygdrpc v1.0.2b
+# pygdrpc v1.0.3b
  Geometry Dash rich presence, rewritten in python!
  ## Features:
  - Level name and percentage
