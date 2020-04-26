@@ -12,6 +12,7 @@
  4. Perfection
  ## Planned Features:
  - Find editor levels names
+ - Robtop level names / percents
  ## Notes
 - Only works on windows.
  ## Compiling
