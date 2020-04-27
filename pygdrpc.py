@@ -19,18 +19,20 @@ except:
     print("Failed to connect to discord, try reopening it?")
 else:
     print("Connected successfully!")
+
 async def if_playing_level():
     scenev = memory.get_scene_value()
     scene = memory.get_scene()
     if scenev == 3:
         playinglevel = "Playing a level."
         return "Playing a level."
-    if scene == "Search" or "Online" or "Select" or "Leaderboard" or "Main" or "Main Levels":
+    if scene == "Main Level" or "The Challenge":
+        playinglevel = "Playing an official level."
+        return "Playing an official level."
+    else:
         playinglevel = "Menu"
         return "Menu"
-    if scene == "Main Level" or "The Challenge":
-        playinglevel = "Playing a robtop level."
-        return "Playing a robtop level."
+
 async def get_difficulty(level: gd.Level) -> str:
     if id != 1404 and id != 0 and id != 1400 and id != 1399 and id != 4294967295 and id != 1408:
         try:
@@ -45,6 +47,7 @@ async def get_difficulty(level: gd.Level) -> str:
             elif level.is_featured():
                 base.append("featured")
             return '-'.join(base)
+
 while True:
     memory.reload()
     scenev = memory.get_scene_value()
@@ -66,12 +69,12 @@ while True:
     if scenev == 3 and iseditor and ltypev != 2:
         RPC.update(pid=memory.process_id, details="In the editor.", large_image="gd")
     if scenev == 3 and iseditor == False and ltypev == 2:
-        RPC.update(pid=memory.process_id, state=str(f"{name} {percent}"), details="Playtesting an editor level.", large_image="gd")
+        RPC.update(pid=memory.process_id, state=str(f"{name} {percent}"), details="Playing an editor level.", large_image="gd")
     else:
         if scenev == scenev != 3 and iseditor == False and ltypev != 2 and ltypev != 3 and ltypev != 1 or percent == "   " or None:
             RPC.update(pid=memory.process_id, state="     ", details="Menu", large_image="gd")
         else:
             if scenev == 9 and ltypev == 1:
                 smallimage = asyncio.run(get_difficulty(id))
-                RPC.update(pid=memory.process_id, state="     ", details="Playing a robtop level.", large_image="gd", small_image=smallimage)
+                RPC.update(pid=memory.process_id, state="     ", details="Playing an official level.", large_image="gd", small_image=smallimage)
     time.sleep(5)
