@@ -4,7 +4,9 @@ import gd
 import asyncio
 import os
 from termcolor import cprint 
-cprint(figlet_format("PyGDRPC", font="small"))
+from pyfiglet import figlet_format
+VERSION = "1.1.2"
+cprint(figlet_format('PyGDRPC', font='small'))
 print(f"PyGDRPC v{VERSION} \nStarting...")
 try:
     memory = gd.memory.get_memory()
