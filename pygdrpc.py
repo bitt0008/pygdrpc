@@ -2,7 +2,7 @@ from pypresence import Presence
 import time
 import gd
 import asyncio
-version = "1.0.4b"
+version = "1.1.0"
 print(f"Version is {version}")
 smallimage = "none"
 client = gd.Client()
@@ -19,14 +19,6 @@ except:
     print("Failed to connect to discord, try reopening it?")
 else:
     print("Connected successfully!")
-async def get_level_from_id(id):
-    global playinglevel
-    try:
-        level = await client.get_level(id)
-        return level.name
-    except gd.MissingAccess:
-        if playinglevel != "Menu":
-            return "Editor level"
 async def if_playing_level():
     scenev = memory.get_scene_value()
     scene = memory.get_scene()
@@ -57,6 +49,9 @@ while True:
     memory.reload()
     scenev = memory.get_scene_value()
     scene = memory.get_scene()
+    ltypev = memory.get_level_type_value()
+    ltype = memory.get_level_type()
+    iseditor = memory.is_in_editor()
     id = memory.get_level_id()
     percent = memory.get_normal_percent()
     playinglevel = asyncio.run(if_playing_level())
@@ -64,15 +59,19 @@ while True:
         percent = "   "
     else:
         percent = "(" + str(percent) + "%)"
-    name = asyncio.run(get_level_from_id(id))
-    if scenev == 3:
+    name = memory.get_level_name()
+    if scenev == 3 and iseditor == False and ltypev == 3 and percent == "   ":
         smallimage = asyncio.run(get_difficulty(id))
-        RPC.update(state=str(f"{name} {percent}"), details=playinglevel, large_image="gd", small_image=asyncio.run(get_difficulty(id)))
+        RPC.update(pid=memory.process_id, state=str(f"{name} {percent}"), details=playinglevel, large_image="gd", small_image=asyncio.run(get_difficulty(id)))
+    if scenev == 3 and iseditor and ltypev != 2:
+        RPC.update(pid=memory.process_id, details="In the editor.", large_image="gd")
+    if scenev == 3 and iseditor == False and ltypev == 2:
+        RPC.update(pid=memory.process_id, state=str(f"{name} {percent}"), details="Playtesting an editor level.", large_image="gd")
     else:
-        if scenev == 0 or 1 or 2 or 4 or 6 or 7 or 8 and smallimage == "none" and scenev != 3:
-            RPC.update(state="     ", details="Menu", large_image="gd")
+        if scenev == scenev != 3 and iseditor == False and ltypev != 2 and ltypev != 3 and ltypev != 1 or percent == "   " or None:
+            RPC.update(pid=memory.process_id, state="     ", details="Menu", large_image="gd")
         else:
-            if scenev == 9 and smallimage == "none":
+            if scenev == 9 and ltypev == 1:
                 smallimage = asyncio.run(get_difficulty(id))
-                RPC.update(state="     ", details="Playing a robtop level.", large_image="gd", small_image=smallimage)
+                RPC.update(pid=memory.process_id, state="     ", details="Playing a robtop level.", large_image="gd", small_image=smallimage)
     time.sleep(5)
