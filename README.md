@@ -1,4 +1,4 @@
-# PyGDRPC 1.1.1
+# PyGDRPC 1.1.2
  Geometry Dash rich presence, rewritten in python!
  
  ![Example](https://i.imgur.com/hoMXIHh.png)
