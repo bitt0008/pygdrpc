@@ -3,15 +3,15 @@ import time
 import gd
 import asyncio
 import os
-VERSION = "1.1.1"
-
-print(f"PyGDRPC v{VERSION} \n \t Starting...")
+from termcolor import cprint 
+cprint(figlet_format("PyGDRPC", font="small"))
+print(f"PyGDRPC v{VERSION} \nStarting...")
 try:
     memory = gd.memory.get_memory()
 except RuntimeError:
     print("Open Geometry Dash before running this!")
     os.system("PAUSE")
-
+    exit()
 smallimage = "none" # fallback in case of the difficulty face not being returned
 client = gd.Client() 
 scenev = memory.get_scene_value()
