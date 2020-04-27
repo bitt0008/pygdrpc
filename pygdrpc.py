@@ -25,7 +25,7 @@ name = memory.get_level_name()
 client_id = '703049428822655048'
 RPC = Presence(client_id)
 
-print("\t Connecting...")
+print("Connecting...")
 try:
     RPC.connect()
 except:
@@ -46,8 +46,8 @@ async def get_difficulty(level: gd.Level) -> str:
         elif level.is_featured():
             base.append("featured")
         return '-'.join(base)
-
-async def run():
+print("\nRunning!")
+while True:
     memory.reload()
     percent = str(memory.get_normal_percent())
     if scenev == 3 and iseditor == False and ltypev == 3:
@@ -65,9 +65,4 @@ async def run():
             if scenev == 9 and ltypev == 1:
                 smallimage = asyncio.run(get_difficulty(id))
                 RPC.update(pid=memory.process_id, state="     ", details="Playing an official level", large_image="gd", small_image=smallimage)
-
-print("\n Running!")
-
-while True:
-    asyncio.run(run())
     time.sleep(5)
