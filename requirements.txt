@@ -2,3 +2,4 @@ pypresence
 gd.py
 asyncio
 pyfiglet
+termcolor
