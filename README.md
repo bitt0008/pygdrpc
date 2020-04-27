@@ -1,5 +1,6 @@
 # PyGDRPC 1.1.2
  Geometry Dash rich presence, rewritten in python!
+ ![Python App](https://github.com/SpookyBear0/pygdrpc/workflows/Python%20App/badge.svg)
  
  ![Example](https://i.imgur.com/hoMXIHh.png)
  ## Features:
