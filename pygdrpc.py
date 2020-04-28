@@ -9,21 +9,18 @@ from pyfiglet import figlet_format
 VERSION = "1.1.3"
 cprint(figlet_format('PyGDRPC', font='small'))
 print(f"PyGDRPC v{VERSION} \nStarting...")
-
 def Wait (time, silent=False):
     time = time * 1000
     string = f"ping 192.0.2.1 -n 1 -w {time}"
     if silent:
         string = string + " >nul"
     os.system(string)
-
 try:
     memory = gd.memory.get_memory()
 except RuntimeError:
     print("Run GD first!")
     Wait(10, True)
     exit()
-
 smallimage = "none" # fallback in case of the difficulty face not being returned
 client = gd.Client()
 editorlevel = False
@@ -31,7 +28,6 @@ client_id = "703049428822655048"
 RPC = Presence(client_id)
 print("Connecting...")
 RPC.connect()
-
 async def get_difficulty(level: gd.Level) -> str:
     try:
         level = await client.get_level(lid)
