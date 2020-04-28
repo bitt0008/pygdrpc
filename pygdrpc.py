@@ -63,6 +63,5 @@ while True:
             RPC.update(pid=memory.process_id, state="     ", details="In menu", large_image="gd")
         else:
             if scenev == 9 and ltypev == 1:
-                smallimage = asyncio.run(get_difficulty(id))
-                RPC.update(pid=memory.process_id, state="     ", details="Playing an official level", large_image="gd", small_image=smallimage)
+                RPC.update(pid=memory.process_id, state="     ", details="Playing an official level", large_image="gd")
     time.sleep(5)
