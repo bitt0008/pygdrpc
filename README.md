@@ -35,3 +35,6 @@
 **
   - Nekit: Showing me how to use the memory part of gd.py and more
 **
+
+
+**Please tell me if you like this program. Make an issue if you want to suggest features.**
