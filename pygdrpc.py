@@ -78,7 +78,7 @@ while True:
     if scenev == 3 and iseditor == False and ltypev == 2:
         RPC.update(pid=memory.process_id, state=str(f"{name} ({percent}%)"), details="Playing an editor level", large_image="gd", small_image="cp")
     else:
-        if ltypev == 0:
+        if ltypev == 0 and scenev != 3:
             RPC.update(pid=memory.process_id, state="     ", details="In menu", large_image="gd")
         else:
             if scenev == 9 and ltypev == 1:
