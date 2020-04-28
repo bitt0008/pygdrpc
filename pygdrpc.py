@@ -4,7 +4,7 @@ import time
 import gd
 import asyncio
 import os
-from termcolor import cprint 
+from termcolor import cprint
 from pyfiglet import figlet_format
 VERSION = "1.1.3"
 cprint(figlet_format('PyGDRPC', font='small'))
@@ -15,7 +15,6 @@ def Wait (time, silent=False):
     string = f"ping 192.0.2.1 -n 1 -w {time}"
     if silent:
         string = string + " >nul"
-    
     os.system(string)
 
 try:
@@ -26,21 +25,16 @@ except RuntimeError:
     exit()
 
 smallimage = "none" # fallback in case of the difficulty face not being returned
-client = gd.Client() 
-client_id = '703049428822655048'
+client = gd.Client()
+editorlevel = False
+client_id = "703049428822655048"
 RPC = Presence(client_id)
 print("Connecting...")
-try:
-    RPC.connect()
-except:
-    print("Failed to connect to Discord!")
-    Wait(10, True)
-else:
-    print("Connected successfully!")
+RPC.connect()
 
 async def get_difficulty(level: gd.Level) -> str:
     try:
-        level = await client.get_level(id)
+        level = await client.get_level(lid)
     except gd.MissingAccess:
         editorlevel = True
     else:
@@ -52,14 +46,15 @@ async def get_difficulty(level: gd.Level) -> str:
             base.append("featured")
         return '-'.join(base)
 async def get_offical_difficulty(level: gd.Level) -> str:
+    global editorlevel
     try:
-        olevel = gd.Level.official(id)
+        olevel = gd.Level.official(lid)
     except gd.MissingAccess:
         editorlevel = True
     else:
         editorlevel = False
         base = olevel.difficulty.name.lower().split("_")
-        return '-'.join(base).replace("easy", "hard")
+        return '-'.join(base)
 print("\nRunning!")
 while True:
     memory.reload()
@@ -71,9 +66,9 @@ while True:
     name = memory.get_level_name()
     percent = str(memory.get_normal_percent())
     if scenev == 3 and iseditor == False and ltypev == 3:
-        id = memory.get_level_id()
-        smallimage = asyncio.run(get_difficulty(id))
-        RPC.update(pid=memory.process_id, state=str(f"{name} ({percent}%)"), details="Playing a level", large_image="gd", small_image=asyncio.run(get_difficulty(id)))
+        lid = memory.get_level_id()
+        smallimage = asyncio.run(get_difficulty(lid))
+        RPC.update(pid=memory.process_id, state=str(f"{name} ({percent}%)"), details="Playing a level", large_image="gd", small_image=asyncio.run(get_difficulty(lid)))
     if scenev == 3 and iseditor:
         RPC.update(pid=memory.process_id, details="In the editor.", large_image="gd", small_image="cp")
     if scenev == 3 and iseditor == False and ltypev == 2:
@@ -83,9 +78,9 @@ while True:
             RPC.update(pid=memory.process_id, state="     ", details="In menu", large_image="gd")
         else:
             if scenev == 9 and ltypev == 1:
-                id = memory.get_level_id()
-                olevel = gd.Level.official(id)
+                lid = memory.get_level_id()
+                olevel = gd.Level.official(lid)
                 name = olevel.name
-                smallimage = asyncio.run(get_offical_difficulty(id))
+                smallimage = asyncio.run(get_offical_difficulty(lid))
                 RPC.update(pid=memory.process_id, state=f"{name} ({percent}%)", details="Playing an official level", large_image="gd", small_image=smallimage)
     time.sleep(5)
