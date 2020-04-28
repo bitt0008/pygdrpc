@@ -1,4 +1,5 @@
 ![Python App](https://github.com/SpookyBear0/pygdrpc/workflows/Python%20App/badge.svg)
+[![codebeat badge](https://codebeat.co/badges/8a582bf3-f18f-482d-849a-59eefb9dde22)](https://codebeat.co/projects/github-com-spookybear0-pygdrpc-master)
 
 # PyGDRPC 1.1.3
  Geometry Dash rich presence, rewritten in Python!
