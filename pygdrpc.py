@@ -74,9 +74,9 @@ while True:
         smallimage = asyncio.run(get_difficulty(id))
         RPC.update(pid=memory.process_id, state=str(f"{name} ({percent}%)"), details="Playing a level", large_image="gd", small_image=asyncio.run(get_difficulty(id)))
     if scenev == 3 and iseditor:
-        RPC.update(pid=memory.process_id, details="In the editor.", large_image="gd")
+        RPC.update(pid=memory.process_id, details="In the editor.", large_image="gd", small_image="cp")
     if scenev == 3 and iseditor == False and ltypev == 2:
-        RPC.update(pid=memory.process_id, state=str(f"{name} ({percent}%)"), details="Playing an editor level", large_image="gd")
+        RPC.update(pid=memory.process_id, state=str(f"{name} ({percent}%)"), details="Playing an editor level", large_image="gd", small_image="cp")
     else:
         if ltypev == 0:
             RPC.update(pid=memory.process_id, state="     ", details="In menu", large_image="gd")
