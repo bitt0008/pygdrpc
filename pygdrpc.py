@@ -11,7 +11,8 @@ cprint(figlet_format('PyGDRPC', font='small'))
 print(f"PyGDRPC v{VERSION} \nStarting...")
 
 def Wait (time, silent=False):
-    string = "timeout " + str(time)
+    time = time * 1000
+    string = f"ping 192.0.2.1 -n 1 -w {time}"
     if silent:
         string = string + " >nul"
     
