@@ -79,24 +79,24 @@ while True:
     if scenev == 3 and iseditor == False and ltypev == 3:
         lid = memory.get_level_id()
         smallimage = asyncio.run(get_difficulty(lid))
-        RPC.update(pid=memory.process_id, state=str(f"{name} ({percent}%)"), details="Playing a level", large_image="gd", small_image=asyncio.run(get_difficulty(lid)))
+        RPC.update(pid=memory.process_id, large_text=str(f"{name} ({percent}%)"), details="Playing a level", large_image="gd", small_image=asyncio.run(get_difficulty(lid)))
     
     if scenev == 3 and iseditor:
         if not data.editor.LevelNameVisible: RPC.update(pid=memory.process_id, details="Editing the level", large_image="gd", small_image="cp")
         else: RPC.update(pid=memory.process_id, state=str(f"{name} ({objects}obj)"), details="Editing the level", large_image="gd", small_image="cp")
     
     if scenev == 3 and iseditor == False and ltypev == 2:
-        if not data.editor.LevelNameVisible: RPC.update(pid=memory.process_id, state=str(f"({percent}%)"), details="Playing an editor level", large_image="gd", small_image="cp")
-        else: RPC.update(pid=memory.process_id, state=str(f"{name} ({percent}%)"), details="Playing an editor level", large_image="gd", small_image="cp")
+        if not data.editor.LevelNameVisible: RPC.update(pid=memory.process_id, large_text=str(f"({percent}%)"), details="Playing an editor level", large_image="gd", small_image="cp")
+        else: RPC.update(pid=memory.process_id, large_text=str(f"{name} ({percent}%)"), details="Playing an editor level", large_image="gd", small_image="cp")
     
     else:
         if ltypev == 0 and scenev != 3:
-            RPC.update(pid=memory.process_id, state="     ", details="In menu", large_image="gd")
+            RPC.update(pid=memory.process_id, details="In menu", large_image="gd")
         else:
             if scenev == 9 and ltypev == 1:
                 lid = memory.get_level_id()
                 olevel = gd.Level.official(lid)
                 name = olevel.name
                 smallimage = asyncio.run(get_offical_difficulty(lid))
-                RPC.update(pid=memory.process_id, state=f"{name} ({percent}%)", details="Playing an official level", large_image="gd", small_image=smallimage)
+                RPC.update(pid=memory.process_id, large_text=f"{name} ({percent}%)", details="Playing an official level", large_image="gd", small_image=smallimage)
     time.sleep(5)
