@@ -30,8 +30,8 @@ If you want to get the latest devoloper version right off the master branch, you
  
 1. Clone repo
 2. CD to the folder you want to compile from in command prompt.
-3. Run the command `python3 -m PyInstaller -F --hiddenimport pkg_resources.py2_warn -i assets/gd.ico pygdrpc.py` (if it says command not found - try replacing `python3` with `python` or `py`)
-4. Wait for it to finish then go in the newly created folder "dist", and your .exe should be waiting there.
+3. Run the command `python3 -m PyInstaller -F --hiddenimport pkg_resources.py2_warn -i assets/gd.ico src/pygdrpc.py` (if it says command not found - try replacing `python3` with `python` or `py`)
+4. Wait for it to finish then go in the newly created folder `dist`, and your file should be waiting there.
  
 ## Planned Features:
 - None at the moment, if you want a feature, make an issue.
