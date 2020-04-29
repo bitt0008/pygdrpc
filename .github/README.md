@@ -17,6 +17,14 @@ Geometry Dash rich presence, rewritten in Python!
 2. Open Geometry Dash (Note: GDPS don't work)
 3. Start `pygdrpc.exe`
 
+## Configuring
+PyGDRPC is flexible, and allows you to change multiple options.
+It is **not** hard to configure:
+* `true` = enable
+* `false` = disable
+
+Default configuration should already suit the majority of the people.
+
 ## Compiling
 If you want to get the latest devoloper version right off the master branch, you can build it yourself.
 
