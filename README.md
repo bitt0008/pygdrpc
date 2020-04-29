@@ -1,18 +1,18 @@
 ![Python App](https://github.com/SpookyBear0/pygdrpc/workflows/Python%20App/badge.svg)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bc38c4e9065646a4976c8a021456d63c)](https://www.codacy.com/manual/SpookyBear0/pygdrpc?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SpookyBear0/pygdrpc&amp;utm_campaign=Badge_Grade)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
 # PyGDRPC 1.1.3
 Geometry Dash rich presence, rewritten in Python!
   
 ![Example](https://i.imgur.com/hoMXIHh.png)
-## Features:
+## Features
 - Level name and normal mode percentage
 - Shows when you are in the editor (No name for security)
 - Difficulty faces
 - Name and normal mode percentage on local levels
 - Shows when you are in menu
  
-## How to use:
+## How to use
 1. Download exe from releases
 2. Open Geometry Dash (Note: GDPS don't work)
 3. Start `pygdrpc.exe`
