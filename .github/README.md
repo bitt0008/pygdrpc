@@ -23,8 +23,8 @@ If you want to get the latest devoloper version right off the master branch, you
 **Requirements**
 
 - Python >=3.6
-- All modules in `requirements.txt` (`pip install -r requirements.txt`)
-- Pyinstaller module (`pip install pyinstaller`)
+- All modules in `src/requirements.txt` (`pip install -r src/requirements.txt`)
+- `pyinstaller` module (`pip install pyinstaller`)
 
 ### Building
  
